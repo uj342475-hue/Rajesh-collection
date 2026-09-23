@@ -1,126 +1,572 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rajesh Collection Whole Sale Bazar Chandauli</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#171717}
-.wrap{max-width:1000px;margin:auto;padding:18px}
-.hero{background:linear-gradient(135deg,#111827,#26364d,#e9eef7);color:#fff;padding:30px;border-radius:24px;margin-bottom:18px;box-shadow:0 10px 30px #0003}
-h1{margin:10px 0 8px;font-size:30px}.sub{color:#555}.hero .sub{color:#fffc}
-.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-a{min-height:46px;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
-.call{background:#fff;color:#111}.wa{background:#168a43;color:#fff}
-h2{font-size:21px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#fff;border:1px solid #ddd;border-radius:16px;padding:18px;cursor:pointer}
-.icon{font-size:30px;margin-bottom:8px}.note{background:#fff;border-radius:16px;padding:18px;border:1px solid #ddd;margin-top:18px}
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
-.gallery img{width:100%;height:260px;object-fit:cover;border-radius:16px;display:block}
-.gallery-card{background:#fff;border:1px solid #ddd;border-radius:18px;padding:10px;overflow:hidden}
-.gallery-card .caption{padding:9px 5px 4px;font-weight:700}.full{width:100%;margin-top:12px}
-footer{text-align:center;color:#777;font-size:13px;padding:20px}
-@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:520px){.gallery img{height:220px}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#0b0b0f;
+  color:white;
+}
+
+.hero{
+  padding:55px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#111827,#1f2937,#111827);
+}
+
+.hero small{
+  color:#aaa;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-size:34px;
+  margin:12px 0;
+}
+
+.hero p{
+  color:#ccc;
+}
+
+.section{
+  padding:30px 15px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:22px;
+  font-size:26px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.card{
+  background:#17171d;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid #292933;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:active{
+  transform:scale(.97);
+}
+
+.card img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  display:block;
+}
+
+.card-info{
+  padding:12px;
+}
+
+.card-info h3{
+  font-size:16px;
+  margin-bottom:5px;
+}
+
+.card-info span{
+  color:#aaa;
+  font-size:13px;
+}
+
+.saree-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.saree-grid img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.btn{
+  padding:13px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  background:#222;
+  border:1px solid #444;
+}
+
+.whatsapp{
+  background:#168c45;
+  border:none;
+}
+
+/* FULL SCREEN GALLERY */
+.gallery{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.97);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.gallery.active{
+  display:flex;
+}
+
+.gallery img{
+  max-width:94%;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:8px;
+  user-select:none;
+}
+
+.close{
+  position:absolute;
+  top:18px;
+  right:20px;
+  font-size:34px;
+  color:white;
+  cursor:pointer;
+  z-index:10;
+}
+
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.15);
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.prev{
+  left:12px;
+}
+
+.next{
+  right:12px;
+}
+
+.counter{
+  margin-top:15px;
+  color:#ddd;
+  font-size:15px;
+}
+
+.gallery-title{
+  margin-bottom:12px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{
+    font-size:28px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .card img{
+    height:190px;
+  }
+
+  .card-info{
+    padding:9px;
+  }
+
+  .card-info h3{
+    font-size:14px;
+  }
+
+  .saree-grid{
+    grid-template-columns:1fr;
+  }
+
+  .saree-grid img{
+    height:260px;
+  }
+
+  .gallery img{
+    max-width:100%;
+    max-height:75vh;
+  }
+
+  .arrow{
+    width:40px;
+    height:40px;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
+
 <section class="hero">
-<div style="display:inline-block;padding:7px 12px;border:1px solid #ffffff59;border-radius:999px;font-size:12px;letter-spacing:1px;background:#ffffff14">CHANDAULI • WHOLESALE BAZAR</div>
-<h1>RAJESH COLLECTION</h1>
-<div style="font-size:18px;font-weight:700">WHOLE SALE BAZAR • CHANDAULI</div>
-<div class="sub">Saree • Peticot • Faal • Astar • Readymade Shirt • Pant • Aur bhi readymade items</div>
+  <small>CHANDAULI • WHOLESALE BAZAR</small>
+  <h1>RAJESH COLLECTION</h1>
+  <p>WHOLE SALE BAZAR • CHANDAULI</p>
+
+  <div class="buttons">
+    <a class="btn" href="tel:9956120932">📞 Call Now</a>
+    <a class="btn whatsapp"
+       href="https://wa.me/919956120932?text=Hello%20Rajesh%20Collection,%20mujhe%20products%20ke%20baare%20mein%20jaankari%20chahiye.">
+       💬 WhatsApp
+    </a>
+  </div>
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+<h2>🛍️ New Collection</h2>
+
+<div class="grid">
+
+  <!-- GREEN FLORAL - 4 -->
+  <div class="card" onclick="openGallery(0)">
+    <img src="IMG-20260923-WA0010.jpg">
+    <div class="card-info">
+      <h3>Green Floral Dress</h3>
+      <span>4 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- BLUE DENIM - 2 -->
+  <div class="card" onclick="openGallery(1)">
+    <img src="IMG-20260923-WA0059.jpg">
+    <div class="card-info">
+      <h3>Blue Denim Jeans</h3>
+      <span>2 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- DARK BLUE KURTI - 3 -->
+  <div class="card" onclick="openGallery(2)">
+    <img src="IMG-20260923-WA0066.jpg">
+    <div class="card-info">
+      <h3>Dark Blue Embroidered Kurti</h3>
+      <span>3 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- BEIGE CARGO - 3 -->
+  <div class="card" onclick="openGallery(3)">
+    <img src="IMG-20260923-WA0074.jpg">
+    <div class="card-info">
+      <h3>Beige Cargo Pant</h3>
+      <span>3 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- GREEN PRINTED - 3 -->
+  <div class="card" onclick="openGallery(4)">
+    <img src="IMG-20260923-WA0077.jpg">
+    <div class="card-info">
+      <h3>Green Printed Kurti</h3>
+      <span>3 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- CREAM FLORAL - 2 -->
+  <div class="card" onclick="openGallery(5)">
+    <img src="IMG-20260923-WA0090.jpg">
+    <div class="card-info">
+      <h3>Cream Floral Kurti</h3>
+      <span>2 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- LIGHT BLUE DENIM - 2 -->
+  <div class="card" onclick="openGallery(6)">
+    <img src="IMG-20260923-WA0100.jpg">
+    <div class="card-info">
+      <h3>Light Blue Denim Jeans</h3>
+      <span>2 Photos • Tap to View</span>
+    </div>
+  </div>
+
+  <!-- GREY BUTTERFLY - 2 -->
+  <div class="card" onclick="openGallery(7)">
+    <img src="IMG-20260923-WA0106.jpg">
+    <div class="card-info">
+      <h3>Grey Butterfly Jeans</h3>
+      <span>2 Photos • Tap to View</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- SAREE -->
+<section class="section">
+<h2>✨ Saree Collection</h2>
+
+<div class="saree-grid">
+  <img src="IMG-20260922-WA0017.jpg">
+  <img src="IMG-20260922-WA0018.jpg">
+  <img src="IMG-20260922-WA0019.jpg">
+</div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="section">
+<h2>📲 Order / Enquiry</h2>
+
+<p style="text-align:center;color:#bbb;line-height:1.6;">
+Wholesale rates aur product details ke liye WhatsApp karein.
+</p>
+
 <div class="buttons">
-<a class="call" href="tel:9956120932">📞 Call Now</a>
-<a class="wa" href="https://wa.me/919956120932" target="_blank">💬 WhatsApp</a>
+<a class="btn whatsapp"
+href="https://wa.me/919956120932?text=Hello%20Rajesh%20Collection,%20mujhe%20wholesale%20products%20ke%20baare%20mein%20jaankari%20chahiye.">
+💬 WhatsApp Enquiry
+</a>
+
+<a class="btn" href="tel:9956120932">
+📞 9956120932
+</a>
 </div>
 </section>
 
-<h2>🛍️ Hamare Products</h2>
-<section class="grid">
-<a class="card" href="#saree"><div class="icon">🥻</div><b>Saree</b><div class="sub">Wholesale collection</div></a>
-<div class="card"><div class="icon">👗</div><b>Peticoat</b><div class="sub">Different varieties</div></div>
-<div class="card"><div class="icon">🧵</div><b>Faal & Astar</b><div class="sub">Garment accessories</div></div>
-<div class="card"><div class="icon">👔</div><b>Readymade Shirt</b><div class="sub">Ready-to-wear</div></div>
-<div class="card"><div class="icon">👖</div><b>Readymade Pant</b><div class="sub">Ready-to-wear</div></div>
-<div class="card"><div class="icon">🛍️</div><b>More Items</b><div class="sub">Aur bhi readymade items</div></div>
-</section>
 
-<section id="saree" class="note">
-<h2 style="margin-top:0">🥻 Saree Collection</h2>
-<div class="sub">Rajesh Collection • Wholesale Bazar Chandauli</div>
-<div class="gallery">
-<div class="gallery-card"><img src="IMG-20260922-WA0017.jpg" alt="Saree Design 01"><div class="caption">Saree Design 01</div></div>
-<div class="gallery-card"><img src="IMG-20260922-WA0018.jpg" alt="Saree Design 02"><div class="caption">Saree Design 02</div></div>
-<div class="gallery-card"><img src="IMG-20260922-WA0019.jpg" alt="Saree Design 03"><div class="caption">Saree Design 03</div></div>
-</div>
-</section>
- <section class="note" id="products">
-<h2 style="margin-top:0">🛍️ All Products</h2>
-<div class="sub">Rajesh Collection • Wholesale Bazar Chandauli</div>
+<!-- FULLSCREEN GALLERY -->
+<div class="gallery" id="gallery">
 
-<div class="gallery">
+  <div class="close" onclick="closeGallery()">×</div>
 
-<div class="gallery-card">
-<img src="IMG-20260922-WA0017.jpg" alt="Saree 01">
-<div class="caption">Saree Collection 01</div>
+  <div class="gallery-title" id="galleryTitle"></div>
+
+  <button class="arrow prev" onclick="previousPhoto()">‹</button>
+
+  <img id="galleryImage" src="">
+
+  <button class="arrow next" onclick="nextPhoto()">›</button>
+
+  <div class="counter" id="counter"></div>
 </div>
 
-<div class="gallery-card">
-<img src="IMG-20260922-WA0018.jpg" alt="Saree 02">
-<div class="caption">Saree Collection 02</div>
-</div>
 
-<div class="gallery-card">
-<img src="IMG-20260922-WA0019.jpg" alt="Saree 03">
-<div class="caption">Saree Collection 03</div>
-</div>
+<script>
 
-<div class="gallery-card">
-<img src="IMG-20260923-WA0066.jpg" alt="New Product 01">
-<div class="caption">New Collection 01</div>
-</div>
+const products = [
 
-<div class="gallery-card">
-<img src="IMG-20260923-WA0078.jpg" alt="New Product 02">
-<div class="caption">New Collection 02</div>
-</div>
+  {
+    title:"Green Floral Dress",
+    photos:[
+      "IMG-20260923-WA0010.jpg",
+      "IMG-20260923-WA0012.jpg",
+      "IMG-20260923-WA0014.jpg",
+      "IMG-20260923-WA0017.jpg"
+    ]
+  },
 
-<div class="gallery-card">
-<img src="IMG-20260923-WA0082.jpg" alt="New Product 03">
-<div class="caption">New Collection 03</div>
-</div>
+  {
+    title:"Blue Denim Jeans",
+    photos:[
+      "IMG-20260923-WA0059.jpg",
+      "IMG-20260923-WA0063.jpg"
+    ]
+  },
 
-</div>
- </section>
-  <section class="note">
-<h2 style="margin-top:0">✨ New Collection</h2>
-<div class="sub">Latest Readymade Collection • Wholesale Bazar Chandauli</div>
+  {
+    title:"Dark Blue Embroidered Kurti",
+    photos:[
+      "IMG-20260923-WA0066.jpg",
+      "IMG-20260923-WA0078.jpg",
+      "IMG-20260923-WA0082.jpg"
+    ]
+  },
 
-<div class="gallery">
-<div class="gallery-card">
-<img src="IMG-20260923-WA0066.jpg" alt="New Collection 01">
-<div class="caption">New Collection 01</div>
-</div>
+  {
+    title:"Beige Cargo Pant",
+    photos:[
+      "IMG-20260923-WA0074.jpg",
+      "IMG-20260923-WA0081.jpg",
+      "IMG-20260923-WA0092.jpg"
+    ]
+  },
 
-<div class="gallery-card">
-<img src="IMG-20260923-WA0078.jpg" alt="New Collection 02">
-<div class="caption">New Collection 02</div>
-</div>
+  {
+    title:"Green Printed Kurti",
+    photos:[
+      "IMG-20260923-WA0077.jpg",
+      "IMG-20260923-WA0104.jpg",
+      "IMG-20260923-WA0105.jpg"
+    ]
+  },
 
-<div class="gallery-card">
-<img src="IMG-20260923-WA0082.jpg" alt="New Collection 03">
-<div class="caption">New Collection 03</div>
-</div>
-</div>
-</section>
-<section class="note">
-<h2 style="margin-top:0">📱 Order / Enquiry</h2>
-<div class="sub">Product ke baare mein poochne ya wholesale order ke liye WhatsApp karein.</div>
-<a class="wa full" href="https://wa.me/919956120932?text=Namaste%20Rajesh%20Collection%2C%20mujhe%20Saree%20collection%20ke%20baare%20mein%20jaankari%20chahiye." target="_blank">WhatsApp Par Message Karein</a>
-</section>
-<footer>RAJESH COLLECTION WHOLE SALE BAZAR • CHANDAULI</footer>
-</div>
+  {
+    title:"Cream Floral Kurti",
+    photos:[
+      "IMG-20260923-WA0090.jpg",
+      "IMG-20260923-WA0101.jpg"
+    ]
+  },
+
+  {
+    title:"Light Blue Denim Jeans",
+    photos:[
+      "IMG-20260923-WA0100.jpg",
+      "IMG-20260923-WA0108.jpg"
+    ]
+  },
+
+  {
+    title:"Grey Butterfly Jeans",
+    photos:[
+      "IMG-20260923-WA0106.jpg",
+      "IMG-20260923-WA0107.jpg"
+    ]
+  }
+
+];
+
+let currentProduct = 0;
+let currentPhoto = 0;
+
+function openGallery(productIndex){
+
+  currentProduct = productIndex;
+  currentPhoto = 0;
+
+  document.getElementById("gallery").classList.add("active");
+
+  showPhoto();
+}
+
+function showPhoto(){
+
+  const product = products[currentProduct];
+
+  document.getElementById("galleryImage").src =
+    product.photos[currentPhoto];
+
+  document.getElementById("galleryTitle").innerText =
+    product.title;
+
+  document.getElementById("counter").innerText =
+    (currentPhoto + 1) + " / " + product.photos.length;
+}
+
+function nextPhoto(){
+
+  const product = products[currentProduct];
+
+  currentPhoto++;
+
+  if(currentPhoto >= product.photos.length){
+    currentPhoto = 0;
+  }
+
+  showPhoto();
+}
+
+function previousPhoto(){
+
+  const product = products[currentProduct];
+
+  currentPhoto--;
+
+  if(currentPhoto < 0){
+    currentPhoto = product.photos.length - 1;
+  }
+
+  showPhoto();
+}
+
+function closeGallery(){
+
+  document.getElementById("gallery").classList.remove("active");
+
+  document.getElementById("galleryImage").src = "";
+}
+
+
+/* MOBILE SWIPE */
+let touchStartX = 0;
+let touchEndX = 0;
+
+const galleryImage =
+document.getElementById("galleryImage");
+
+galleryImage.addEventListener("touchstart",function(e){
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+galleryImage.addEventListener("touchend",function(e){
+
+  touchEndX = e.changedTouches[0].screenX;
+
+  if(touchEndX < touchStartX - 50){
+    nextPhoto();
+  }
+
+  if(touchEndX > touchStartX + 50){
+    previousPhoto();
+  }
+
+});
+
+
+/* BACK BUTTON / ESC */
+document.addEventListener("keydown",function(e){
+
+  if(e.key === "Escape"){
+    closeGallery();
+  }
+
+  if(e.key === "ArrowRight"){
+    nextPhoto();
+  }
+
+  if(e.key === "ArrowLeft"){
+    previousPhoto();
+  }
+
+});
+
+</script>
+
 </body>
 </html>
